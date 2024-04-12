@@ -2,8 +2,9 @@ const express = require("express");
 const mongoose =require("mongoose");
 const dotnev = require("dotenv")
 const app = express();
+const logger =require("morgan")
 const mainRoute=require("./routes/index.js")
-const port = 4000;
+const port = 5000;
 
 dotnev.config();
 
@@ -19,7 +20,11 @@ const connect = async()=>{
     }
 }
 
+//middlewars
+app.use(express.json());
 app.use("/api" , mainRoute);
+app.use(logger("dev"));
+
 
 
 

@@ -1,17 +1,20 @@
-const express =require("express");
+const express = require("express");
 const router = express.Router();
 
-
-// diğer router dosyaları içe aktarıyoruz
-
-const productRoute = require("./product.js");
+// Diğer rota dosyalarını içe aktarıyoruz
 const categoryRoute = require("./categories.js");
+const authRoute = require("./auth.js");
+const productRoute = require("./products.js");
+const couponRoute = require("./coupons.js");
+const userRoute = require("./users.js");
+const paymentRoute = require("./payment.js");
 
+// Her rotayı ilgili yol altında kullanıyoruz
+router.use("/categories", categoryRoute);
+router.use("/auth", authRoute);
+router.use("/products", productRoute); 
+router.use("/coupons", couponRoute);
+router.use("/users", userRoute);
+router.use("/payment", paymentRoute);
 
-//her rotayı ilgili yol altında kullanıyoruz.
-router.use("./categories,",categoryRoute);
-router.use("./product,",productRoute);
-
-
-
-module.exports=router;
+module.exports = router;
